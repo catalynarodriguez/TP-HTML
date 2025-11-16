@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pink Studio</title>
+
+    <style>
+        /* ======= Estilos generales ======= */
+        body {
+            font-family: Courier New, sans-serif;
+            background-color: #f9f2f9;
+            margin: 0;
+        }
+
+        header {
+            background-color: #d63384;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #f3c1dc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #d63384;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #000;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        .selector {
+            background: #ffe6f2;
+            padding: 15px;
+            border-radius: 10px;
+            width: 300px;
+        }
+
+        .modelo {
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            width: 300px;
+            margin-bottom: 15px;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        footer {
+            background-color: #d63384;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* ======= Para ocultar texto ======= */
+        .oculto {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Pink Studio</h1>
+        <p>Diseños, colores y estilos para vos ✨</p>
+    </header>
+
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#tipos">Tipos y Colores</a>
+        <a href="#galeria">Modelos</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+
+    <!-- ================== SECCIÓN INICIO ================== -->
+    <section id="inicio">
+        <h2>Inicio</h2>
+        <p>Bienvenidos/as a nuestra página sobre diseños de uñas. Aquí vas a poder ver modelos, colores y los tipos de uñas que realizamos.</p>
+
+        <button onclick="mostrarMensaje()">Haz clic aquí</button>
+        <p id="mensaje" class="oculto">¡Gracias por visitar nuestra web de uñas! 💅</p>
+    </section>
+
+    <!-- ================== SECCIÓN TIPOS Y COLORES ================== -->
+<section id="tipos">
+    <h2>Seleccionar color y tipo de uñas</h2>
+
+    <div class="selector">
+        <label><strong>Elegir color:</strong></label><br>
+        <select id="color">
+            <option value="negro">Negro</option>
+            <option value="rojo">Rojo</option>
+            <option value="blanco">Blanco</option>
+        </select>
+
+        <br><br>
+
+        <label><strong>Tipo de uñas:</strong></label><br>
+        <select id="tipo">
+            <option value="semipermanentes">Semipermanentes</option>
+            <option value="esculpidas">Esculpidas</option>
+            <option value="kapping">Kapping Gel</option>
+        </select>
+
+        <br><br>
+        <button onclick="mostrarSeleccion()">Ver selección</button>
+
+        <p id="resultado" style="margin-top: 10px; font-weight: bold;"></p>
+
+        <!-- Aquí aparecerá la imagen correspondiente -->
+        <img id="imgSeleccion" src="" alt="Imagen de uñas" style="margin-top: 15px; width: 100%; border-radius: 10px; display:none;">
+    </div>
+</section>
+    <!-- ================== SECCIÓN GALERÍA ================== -->
+    <section id="galeria">
+        <h2>Modelos - Tiempo y costo</h2>
+
+        <div class="modelo">
+            <img src="imagenes/unias1.jpg" alt="Modelo 1">
+            <p><strong>Tipo:</strong> Semipermanentes</p>
+            <p><strong>Tiempo:</strong> 1 hora</p>
+            <p><strong>Costo:</strong> $4500</p>
+        </div>
+
+        <div class="modelo">
+            <img src="imagenes/unias2.jpg" alt="Modelo 2">
+            <p><strong>Tipo:</strong> Esculpidas</p>
+            <p><strong>Tiempo:</strong> 2 horas</p>
+            <p><strong>Costo:</strong> $9000</p>
+        </div>
+
+        <div class="modelo">
+            <img src="imagenes/unias3.jpg" alt="Modelo 3">
+            <p><strong>Tipo:</strong> Kapping Gel</p>
+            <p><strong>Tiempo:</strong> 1h 30 min</p>
+            <p><strong>Costo:</strong> $6500</p>
+        </div>
+    </section>
+
+    <!-- ================== CONTACTO ================== -->
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <p><strong>Dirección:</strong> Av. Rosas 123, Buenos Aires</p>
+        <p><strong>Horarios:</strong> Lunes a Sábado de 9:00 a 19:00</p>
+        <p><strong>Instagram:</strong> @pink.studio</p>
+        <p><strong>Email:</strong> pinkstudio@gmail.com</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 - Pink Studio</p>
+    </footer>
+
+<script>
+    function mostrarMensaje() {
+        const mensaje = document.getElementById("mensaje");
+        mensaje.classList.toggle("oculto");
+    }
+
+    function mostrarSeleccion() {
+        const color = document.getElementById("color").value;
+        const tipo = document.getElementById("tipo").value;
+        const resultado = document.getElementById("resultado");
+        const imagen = document.getElementById("imgSeleccion");
+
+        resultado.innerText = "Elegiste uñas " + tipo + " de color " + color + ".";
+
+        // Tabla de imágenes según combinación (9 imágenes)
+        const rutas = {
+            "negro-semipermanentes": "imagenes/negrassemi.jpg",
+            "negro-esculpidas": "imagenes/negrasesc.jpg",
+            "negro-kapping": "imagenes/negraskap.jpg",
+
+            "rojo-semipermanentes": "imagenes/rojassemi.jpg",
+            "rojo-esculpidas": "imagenes/rojasesc.jpg",
+            "rojo-kapping": "imagenes/rojaskap.jpg",
+
+            "blanco-semipermanentes": "imagenes/blancassemi.jpg",
+            "blanco-esculpidas": "imagenes/blancasesc.jpg",
+            "blanco-kapping": "imagenes/blancaskap.jpg"
+        };
+
+        const clave = color + "-" + tipo;
+        imagen.src = rutas[clave];
+        imagen.style.display = "block";
+    }
+</script>
+</body>
+</html>
