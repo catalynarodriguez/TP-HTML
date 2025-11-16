@@ -11,6 +11,7 @@
             font-family: Courier New, sans-serif;
             background-color: #f9f2f9;
             margin: 0;
+            transition: 0.3s;
         }
 
         header {
@@ -35,6 +36,21 @@
 
         nav a:hover {
             color: #000;
+        }
+
+        nav button {
+            margin: 0 10px;
+            padding: 6px 12px;
+            background-color: #d63384;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        nav button:hover {
+            background-color: #b0216c;
         }
 
         section {
@@ -68,13 +84,51 @@
             padding: 10px;
         }
 
-        /* ======= Para ocultar texto ======= */
         .oculto {
             display: none;
         }
+
+        /* ======= TEMAS ======= */
+
+        /* Tema claro (es el predeterminado) */
+        .tema-claro {
+            background-color: #f9f2f9;
+            color: #000;
+        }
+
+        /* Tema oscuro */
+        .tema-oscuro {
+            background-color: #1a1a1a;
+            color: white;
+        }
+
+        .tema-oscuro header {
+            background-color: #80004f;
+        }
+
+        .tema-oscuro nav {
+            background-color: #333;
+        }
+
+        .tema-oscuro nav a {
+            color: #fff;
+        }
+
+        .tema-oscuro footer {
+            background-color: #80004f;
+        }
+
+        .tema-oscuro .selector {
+            background-color: #333;
+            color: white;
+        }
+
+        .tema-oscuro .modelo {
+            background-color: #2b2b2b;
+        }
     </style>
 </head>
-<body>
+<body class="tema-claro">
 
     <header>
         <h1>Pink Studio</h1>
@@ -86,6 +140,10 @@
         <a href="#tipos">Tipos y Colores</a>
         <a href="#galeria">Modelos</a>
         <a href="#contacto">Contacto</a>
+
+        <!-- BOTONES PARA CAMBIAR TEMA -->
+        <button onclick="cambiarTemaClaro()">Tema Claro</button>
+        <button onclick="cambiarTemaOscuro()">Tema Oscuro</button>
     </nav>
 
     <!-- ================== SECCIÓN INICIO ================== -->
@@ -127,6 +185,7 @@
         <img id="imgSeleccion" src="" alt="Imagen de uñas" style="margin-top: 15px; width: 100%; border-radius: 10px; display:none;">
     </div>
 </section>
+
     <!-- ================== SECCIÓN GALERÍA ================== -->
     <section id="galeria">
         <h2>Modelos - Tiempo y costo</h2>
@@ -180,7 +239,6 @@
 
         resultado.innerText = "Elegiste uñas " + tipo + " de color " + color + ".";
 
-        // Tabla de imágenes según combinación (9 imágenes)
         const rutas = {
             "negro-semipermanentes": "imagenes/negrassemi.jpg",
             "negro-esculpidas": "imagenes/negrasesc.jpg",
@@ -199,6 +257,17 @@
         imagen.src = rutas[clave];
         imagen.style.display = "block";
     }
+
+    function cambiarTemaClaro() {
+        document.body.classList.remove("tema-oscuro");
+        document.body.classList.add("tema-claro");
+    }
+
+    function cambiarTemaOscuro() {
+        document.body.classList.remove("tema-claro");
+        document.body.classList.add("tema-oscuro");
+    }
 </script>
+
 </body>
 </html>
